@@ -1,5 +1,7 @@
 # libmaple
 
+Taken from https://bitbucket.org/nfd/arduino-maple and converted into an Arduino library.
+
 Wiring
 ------
 
