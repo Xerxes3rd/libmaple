@@ -7,7 +7,7 @@ import serial
 import time
 
 #PORT = '/dev/ttyUSB0'	# Linux
-PORT = 'COM3:' # Windows
+PORT = 'COM5' # Windows
 #PORT = '/dev/tty.usbserial-A700ekGi'	# OS X (or similar)
 #PORT = '/dev/tty.usbmodemfa131'
 SPEED = 57600
@@ -155,7 +155,7 @@ def load_image(filename):
 class MapleProxy(object):
 	def __init__(self):
 		log("connecting to %s" % (PORT))
-		self.handle = serial.Serial(PORT, SPEED}, timeout = 1)
+		self.handle = serial.Serial(PORT, baudrate = SPEED, timeout = 1)
 
 		total_sleep = 0
 		while total_sleep < 5:

@@ -24,18 +24,22 @@ void loop() {
 bool read_maple_packet_from_serial()
 {
   // First byte: #bytes in packet (including header and checksum)
-  packet.data_len = Serial.read();
-  if(packet.data_len > 0) {
-    unsigned char *data = &(packet.header[0]);
-    int i;
-    for(i = 0; i < packet.data_len; i++) {
-      *data = Serial.read();
-      data++;
+  if (Serial.available() > 0) {
+    packet.data_len = Serial.read();
+    if(packet.data_len > 0) {
+      unsigned char *data = &(packet.header[0]);
+      int i;
+      for(i = 0; i < packet.data_len; i++) {
+        *data = Serial.read();
+        data++;
+      }
+      return true;
+    } else {
+      
     }
-    return true;
-  } else {
-    return false;
   }
+
+  return false;
 }
 
 void send_maple_packet_to_serial() 
